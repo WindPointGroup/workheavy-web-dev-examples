@@ -14,24 +14,41 @@
             padding: 100px;
         }
 
-        .my-button{
+        .button{
             font-size: 110%;
             padding: 10px 15px;
             cursor: pointer;
             background-color:cornflowerblue;
             color:white;
             border: none;
-            animation: blue_green 2s infinite;
+            margin-bottom: 20px;
         }
 
-        .my-button:hover{
+        .my-anim-button{
+            animation: blue_green 1s infinite;
+        }
+
+        .my-anim-button:hover{
             animation: blue_purple 1s infinite;
+
         }
 
         @keyframes blue_purple {
-            0% {background-color: cornflowerblue;padding: 10px 15px;}
-            50% {background-color: purple;padding: 15px 20px;}
-            100% {background-color: cornflowerblue;padding: 10px 15px;}
+            0% {
+                background-color: cornflowerblue;
+                padding: 10px 15px;
+                color:white;
+            }
+            50% {
+                background-color: purple;
+                padding: 15px 20px;
+                color:black;
+            }
+            100% {
+                background-color: cornflowerblue;
+                padding: 10px 15px;
+                color:white;
+            }
         }
 
         @keyframes blue_green {
@@ -45,7 +62,9 @@
 </head>
 <body>
 <div class="demo-container">
-    <button class="my-button">Click me!</button>
+    <button class="button">Click me?</button>
+    <br>
+    <button class="button my-anim-button">Click me!</button>
 </div>
 
 </body>
