@@ -16,25 +16,29 @@
 
         .box{
             flex: 1;
-            height:300px;
-            background-color:cornflowerblue;
-            margin: 10px;
+            height:150px;
+            margin: 2px;
+            background-image: url('/workheavy-web-dev-examples/img/keyboard.png');
+            background-size: cover;
+            background-position: center;
         }
 
         .box:hover{
             cursor: pointer;
-            animation: blue_purple 2s forwards;
+            animation: my_flex_anim 2s forwards;
         }
 
-        @keyframes blue_purple {
-            0% {background-color: cornflowerblue;flex: 1;}
-            100% {background-color: purple;flex: 2;}
+
+        @keyframes my_flex_anim {
+            0% {flex: 1;}
+            100% {flex: 2;}
         }
 
 
     </style>
 </head>
 <body>
+
 <div class="box-container">
     <div class="box"></div>
     <div class="box"></div>
@@ -45,3 +49,5 @@
 
 </body>
 </html>
+
+
