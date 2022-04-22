@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Fade In</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <style>
+        .demo-container{
+            -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+            -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+            box-sizing: border-box;         /* Opera/IE 8+ */
+            width:100%;
+            padding: 10px;
+        }
+
+        .my-async-img{
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            height:400px;
+            width:400px;
+            display: inline-block;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="demo-container">
+    <img class="my-async-img" data-my-async-img="/workheavy-web-dev-examples/img/lizard.png"/>
+    <div class="my-async-img" data-my-async-img="/workheavy-web-dev-examples/img/lizard.png" data-my-anim-duration="5000"></div>
+</div>
+<script>
+    if (window.jQuery) {
+
+        window.asyncImageLoad = function (){
+
+            jQuery('[data-my-async-img]').each(function() {
+
+                // helper
+                let element = jQuery(this);
+
+                // get atts
+                let img = element.data("my-async-img");
+                let duration = element.data("my-anim-duration");
+                if(duration === null || duration === undefined){
+                    duration = 500;
+                }
+
+                // new image
+                let newImage = new Image();
+
+                // after img load
+                newImage.onload = function () {
+                    if(element.is('img')){
+                        element.attr("src",this.src);
+                    }else{
+                        element.css('background-image', 'url(' + this.src + ')');
+                    }
+                    // fade
+                    element.animate({ opacity: 1 }, { duration: duration });
+                };
+
+                // set src
+                newImage.src = img;
+
+            });
+        };
+
+        jQuery(document).ready(function() {
+            window.asyncImageLoad();
+        });
+
+
+    }else{
+        console.error("Oh no! You need jQuery for this to work.")
+    }
+
+</script>
+</body>
+</html>
+
+
